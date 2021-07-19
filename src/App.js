@@ -3,6 +3,8 @@ import React from 'react'
 import './App.css'
 import BookShelf from"./BookShelf"
 import Search from './Search.js'
+import {Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 class BooksApp extends React.Component {
   shelfs =[{key: 'currentlyReading',name:'Currently Read'},
     {key:'wantToRead',name:'Want To Read'},
@@ -36,13 +38,14 @@ class BooksApp extends React.Component {
   
 
   render() {
-    console.log(this.shelfs[0].key)
+    
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-         <Search onClosed =  {this.closeSearch} books= {this.state.books} onChangeShelf = {this.shelfChanged}/>
-        ) : (
-          <div className="list-books">
+        <Route exact path ='/search' render = { ()=>{
+          return(<Search onClosed =  {this.closeSearch} books= {this.state.books} onChangeShelf = {this.shelfChanged}/>)
+        }} ></Route>
+        
+        <Route exact path = '/' render ={()=>{  return (<div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
@@ -56,12 +59,15 @@ class BooksApp extends React.Component {
               
             </div>
             <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+              <Link  to= "/search"> <button onClick={() => this.setState({ showSearchPage: true })}> toAdd a book </button> </Link>
             </div>
           </div>
-              </div>
-    )
-               }</div>)
+              </div>)}} ></Route>
+       
+        
+        
+    
+               </div>)
     
   }}
 

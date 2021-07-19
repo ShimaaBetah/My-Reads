@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 import Books from './Books.js'
+import {Link} from 'react-router-dom'
 class Search extends Component {
     state = {
         booksToView :[]
@@ -27,7 +28,7 @@ const foundBooks = await BooksAPI.search(query)
         return(
             <div className="search-books">
             <div className="search-books-bar">
-              <button className="close-search" onClick={this.props.onClosed}>Close</button>
+             <Link to= '/'><button className="close-search" onClick={this.props.onClosed}>Close</button></Link> 
               <div className="search-books-input-wrapper">
               
                 <input onChange = {(event)=>this.search(event.target.value)} type="text" placeholder="Search by title or author"/>
