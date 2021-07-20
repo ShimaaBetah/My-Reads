@@ -10,15 +10,7 @@ class BooksApp extends React.Component {
     {key:'wantToRead',name:'Want To Read'},
     {key:'read',name:'Read'}]
   state = {
-   
-       /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    books: [],
-    showSearchPage: false
+    books: []
   };
  
   async componentDidMount(){
@@ -27,7 +19,6 @@ class BooksApp extends React.Component {
     console.log(books);
   };
   
-  closeSearch = ()=>this.setState({ showSearchPage: false });
   shelfChanged =(book,newShelf)=>{
     console.log("haha")
    BooksAPI.update(book,newShelf);
@@ -59,7 +50,7 @@ class BooksApp extends React.Component {
               
             </div>
             <div className="open-search">
-              <Link  to= "/search"> <button onClick={() => this.setState({ showSearchPage: true })}> toAdd a book </button> </Link>
+              <Link  to= "/search"> <button > toAdd a book </button> </Link>
             </div>
           </div>
               </div>)}} ></Route>
