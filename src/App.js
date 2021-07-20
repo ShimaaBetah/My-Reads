@@ -6,9 +6,9 @@ import Search from './Search.js'
 import {Link} from 'react-router-dom'
 import {Route} from 'react-router-dom'
 class BooksApp extends React.Component {
-  shelfs =[{key: 'currentlyReading',name:'Currently Read'},
-    {key:'wantToRead',name:'Want To Read'},
-    {key:'read',name:'Read'}]
+  shelfs =[{key: 'currentlyReading',name:'Currently Read',id : 1},
+    {key:'wantToRead',name:'Want To Read',id :2},
+    {key:'read',name:'Read',id :3}]
   state = {
     books: []
   };
@@ -44,7 +44,7 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
               <div>
                {this.shelfs.map((shelf)=>(
-                 <BookShelf key1={shelf.key} name ={shelf.name} books ={this.state.books} onChangeShelf={this.shelfChanged} />
+                 <BookShelf key1={shelf.key} key = {shelf.id} name ={shelf.name} books ={this.state.books} onChangeShelf={this.shelfChanged} />
                ))}
                
               
